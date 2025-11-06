@@ -1,0 +1,49 @@
+[
+  {
+    "inputs": [{"name": "title", "type": "string"}, {"name": "description", "type": "string"}],
+    "name": "propose",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"name": "proposalId", "type": "uint256"}, {"name": "support", "type": "uint8"}],
+    "name": "castVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"name": "proposalId", "type": "uint256"}],
+    "name": "getProposal",
+    "outputs": [
+      {"name": "id", "type": "uint256"},
+      {"name": "proposer", "type": "address"},
+      {"name": "title", "type": "string"},
+      {"name": "description", "type": "string"},
+      {"name": "startBlock", "type": "uint256"},
+      {"name": "endBlock", "type": "uint256"},
+      {"name": "forVotes", "type": "uint256"},
+      {"name": "againstVotes", "type": "uint256"},
+      {"name": "abstainVotes", "type": "uint256"},
+      {"name": "quorum", "type": "uint256"},
+      {"name": "currentState", "type": "uint8"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "proposalCount",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"name": "account", "type": "address"}],
+    "name": "getVotingPower",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

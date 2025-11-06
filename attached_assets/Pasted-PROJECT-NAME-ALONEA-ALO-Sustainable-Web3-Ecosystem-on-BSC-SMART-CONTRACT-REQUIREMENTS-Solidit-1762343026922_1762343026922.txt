@@ -1,0 +1,333 @@
+PROJECT NAME: ALONEA (ALO) – Sustainable Web3 Ecosystem on BSC
+
+SMART CONTRACT REQUIREMENTS (Solidity ^0.8.27)
+
+1. ALOToken.sol (BEP-20)
+
+· Token Details: Name: "ALONEA", Symbol: "ALO"
+· Total Supply: 100,000,000 ALO
+· Transaction Fees: 2% total
+  · 1% Buyback wallet
+  · 0.5% Auto-add liquidity
+  · 0.5% Treasury wallet
+· Features: Auto buyback & burn, deflationary supply mechanism
+· Security: ReentrancyGuard + Ownable from OpenZeppelin
+
+2. ALOStaking.sol (Tier-based Staking)
+
+Staking Tiers:
+
+· Free: 0 ALO (1.0x multiplier)
+· Bronze: 100 ALO (1.0x multiplier)
+· Silver: 500 ALO (1.1x multiplier)
+· Platinum: 1,000 ALO (1.25x multiplier)
+· Diamond: 1,500 ALO (1.5x multiplier)
+
+Functions: Stake, Unstake, Claim Rewards, Emergency Withdraw
+Features: Live reward calculation based on time and multiplier
+
+3. ALOGovernance.sol
+
+· Proposal creation and management
+· Voting power based on staked ALO balance
+· Quorum requirements and execution logic
+· Time-locked proposals
+
+4. ALOBuyback.sol
+
+· Automatic BNB to ALO conversion
+· Buyback mechanism with burn function
+· Treasury-controlled parameters
+
+All contracts must:
+
+· Compile under Solidity ^0.8.27
+· Use latest OpenZeppelin contracts
+· Include comprehensive event logging
+· Have reentrancy protection where needed
+
+---
+
+HARDHAT BACKEND REQUIREMENTS
+
+Project Structure:
+
+```
+/contracts
+  /ALOToken.sol
+  /ALOStaking.sol  
+  /ALOGovernance.sol
+  /ALOBuyback.sol
+/scripts
+  /deploy.ts
+  /deploy-testnet.ts
+/test
+  /ALOToken.test.ts
+  /ALOStaking.test.ts
+/config
+  /deployments.json
+  /hardhat.config.ts
+```
+
+Deployment Scripts:
+
+· npm run deploy:testnet (BSC Testnet)
+· npm run deploy:mainnet (BSC Mainnet)
+· Automatic ABI export to frontend
+· Deployed addresses written to config/deployments.json
+
+Testing:
+
+· Comprehensive unit tests for all contracts
+· Integration tests for staking and governance
+· Gas optimization reports
+
+---
+
+FRONTEND REQUIREMENTS (React + TypeScript + Vite + PWA)
+
+Core Features:
+
+· WalletConnect v2 + MetaMask integration
+· Automatic network detection (BSC Testnet/Mainnet)
+· Real-time wallet balance display
+· Staking dashboard with tier information
+· Live rewards calculation and display
+· Governance voting interface
+· Transaction status notifications with toast
+· Fully responsive mobile-first design
+· Progressive Web App (PWA) capabilities
+
+PWA Specific Features:
+
+Service Worker Configuration:
+
+· Offline caching for static assets
+· Network-first strategy for API calls
+· Background sync for pending transactions
+· Push notifications for transaction status
+
+Web App Manifest:
+
+· Standalone display mode
+· Theme colors matching brand
+· App icons (192x192, 512x512)
+· Splash screen customization
+
+Offline Capabilities:
+
+· Transaction queue for offline operations
+· Local storage for pending transactions
+· Automatic sync when back online
+· Offline fallback pages
+
+Directory Structure:
+
+```
+frontend/
+  src/
+    components/
+      Wallet/
+      Staking/
+      Governance/
+      Dashboard/
+    utils/
+      web3.ts
+      contracts.ts
+      offlineQueue.ts
+    hooks/
+      useWeb3.ts
+      useStaking.ts
+      useGovernance.ts
+    config/
+      addresses.ts
+      chains.ts
+      pwa.ts
+    styles/
+      globals.css
+  public/
+    icons/
+      icon-192x192.png
+      icon-512x512.png
+    manifest.json
+    sw.js
+```
+
+UI/UX Requirements:
+
+· Modern glassmorphism design
+· Dark/light theme support
+· Mobile-optimized navigation
+· Loading states and skeletons
+· Error boundaries and fallbacks
+· Transaction confirmation modals
+
+---
+
+VERCEL DEPLOYMENT REQUIREMENTS
+
+Build Configuration:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install"
+}
+```
+
+Environment Variables:
+
+· VITE_BSC_MAINNET_RPC
+· VITE_BSC_TESTNET_RPC
+· VITE_WALLETCONNECT_PROJECT_ID
+· VITE_ALCHEMY_API_KEY
+
+Domain Configuration:
+
+· Custom domain setup instructions
+· HTTPS auto-configuration
+· SSL certificate management
+· DNS configuration guide
+
+---
+
+SECURITY & AUDITING REQUIREMENTS
+
+Smart Contract Security:
+
+· Comprehensive unit test coverage (>90%)
+· Slither static analysis integration
+· MythX security scanning
+· Gas optimization reports
+
+Frontend Security:
+
+· Input validation and sanitization
+· XSS protection
+· CSP headers configuration
+· Wallet connection security checks
+
+---
+
+DOCUMENTATION REQUIREMENTS
+
+README.md Contents:
+
+· Project overview and features
+· Installation and setup guide
+· Deployment instructions
+· Contract addresses
+· API documentation
+· Troubleshooting guide
+
+Technical Documentation:
+
+· Smart contract architecture
+· Frontend component documentation
+· Deployment workflow
+· Security considerations
+· Contributing guidelines
+
+---
+
+DEVELOPMENT WORKFLOW
+
+Prerequisites:
+
+· Node.js 18+
+· npm or yarn
+· Git
+· MetaMask or Web3 wallet
+
+Setup Commands:
+
+```bash
+# Install dependencies
+npm install
+
+# Compile contracts
+npx hardhat compile
+
+# Run tests
+npx hardhat test
+
+# Deploy to testnet
+npm run deploy:testnet
+
+# Start frontend
+cd frontend && npm run dev
+
+# Build for production
+npm run build
+```
+
+Environment Files:
+
+.env.example:
+
+```
+BSC_MAINNET_RPC=https://bsc-dataseed.binance.org/
+BSC_TESTNET_RPC=https://data-seed-prebsc-1-s1.binance.org:8545/
+WALLETCONNECT_PROJECT_ID=your_project_id
+DEPLOYER_PRIVATE_KEY=your_private_key
+```
+
+---
+
+DELIVERABLES CHECKLIST
+
+Smart Contracts:
+
+· ALOToken.sol (BEP-20 with fees)
+· ALOStaking.sol (Tier-based staking)
+· ALOGovernance.sol (DAO voting)
+· ALOBuyback.sol (Auto buyback)
+
+Hardhat Infrastructure:
+
+· Deployment scripts
+· Test suites
+· Configuration files
+· ABI export automation
+
+Frontend Application:
+
+· React + TypeScript components
+· Web3 integration
+· PWA configuration
+· Responsive UI
+· Transaction handling
+
+Deployment & Hosting:
+
+· Vercel configuration
+· Environment templates
+· Deployment scripts
+· Documentation
+
+Additional Features:
+
+· Service Worker for offline support
+· Push notifications
+· App install prompts
+· Offline transaction queue
+· Comprehensive error handling
+
+---
+
+SUPPORTED NETWORKS
+
+Primary:
+
+· BSC Mainnet (Chain ID: 56)
+· BSC Testnet (Chain ID: 97)
+
+Secondary (Future):
+
+· Polygon
+· Avalanche
+· Ethereum
+
+This project delivers a complete, production-ready Web3 ecosystem with advanced PWA capabilities, comprehensive staking mechanics, and robust governance features—all built with modern development practices and security considerations.

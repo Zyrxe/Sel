@@ -1,0 +1,54 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "VITE_WALLETCONNECT_PROJECT_ID": "@walletconnect_project_id",
+    "VITE_BSC_MAINNET_RPC": "https://bsc-dataseed.binance.org/",
+    "VITE_BSC_TESTNET_RPC": "https://data-seed-prebsc-1-s1.binance.org:8545/"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "ALONEA - Web3 Ecosystem",
+  "short_name": "ALONEA",
+  "description": "Sustainable Web3 Ecosystem on BSC with staking, governance, and auto buyback",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#7C3AED",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "url": "/",
+      "description": "View your portfolio"
+    },
+    {
+      "name": "Stake",
+      "url": "/staking",
+      "description": "Stake ALO tokens"
+    },
+    {
+      "name": "Governance",
+      "url": "/governance",
+      "description": "Vote on proposals"
+    }
+  ]
+}

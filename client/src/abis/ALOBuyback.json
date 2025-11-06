@@ -1,0 +1,37 @@
+[
+  {
+    "inputs": [],
+    "name": "executeBuyback",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getBuybackStats",
+    "outputs": [
+      {"name": "_totalBuybackBNB", "type": "uint256"},
+      {"name": "_totalBuybackALO", "type": "uint256"},
+      {"name": "_totalBurned", "type": "uint256"},
+      {"name": "_lastBuybackAmount", "type": "uint256"},
+      {"name": "_lastBuybackTime", "type": "uint256"},
+      {"name": "_treasuryBalance", "type": "uint256"}
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalBuybackBNB",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalBurned",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
