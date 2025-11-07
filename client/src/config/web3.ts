@@ -41,7 +41,7 @@ export const ALO_DECIMALS = 18;
 export function formatALO(amount: bigint | string, decimals: number = 2): string {
   const value = typeof amount === "string" ? BigInt(amount) : amount;
   const divisor = BigInt(10 ** ALO_DECIMALS);
-  const整数 = value / divisor;
+  const integer = value / divisor;
   const remainder = value % divisor;
   const decimal = Number(remainder) / Number(divisor);
   return (Number(整数) + decimal).toFixed(decimals);
